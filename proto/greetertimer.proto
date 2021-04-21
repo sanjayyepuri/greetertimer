@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+service GreeterTimer {
+  // Unary request followed by multiple streamed responses.
+  // Response granularity will be set by the request batch size.
+  rpc timeHello(TimerRequest) returns (stream BatchResponse);
+}
+
+message TimerRequest {
+  // the host where the grpc server is running
+  string host = 1;
+  // The port of the grpc server
+  int32 port = 2;
+  // The total number of hellos
+  int32 total = 3;
+  // The number of hellos before sending a BatchResponse.
+  int32 batchSize = 4;
+}
+
+message BatchResponse {
+  // The number of checks that are remaining, calculated relative to
+  // totalChecks in the request.
+  int32 remaining = 1;
+  // The number of checks actually performed in this batch.
+  int32 batchCount = 2;
+  // The number of checks that failed.
+  int32 errCount = 3;
+  // The total time spent, expressed as a number of milliseconds per
+  // request batch size (total time spent performing batchSize number
+  // of health checks).
+  int64 batchTimeMillis = 4;
+}
+
+
+service Greeter {
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
