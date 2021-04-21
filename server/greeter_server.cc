@@ -12,10 +12,11 @@ using grpc::ServerContext;
 using grpc::Status;
 
 using helloworld::Greeter;
-using helloworld::HelloRequest;
 using helloworld::HelloReply;
+using helloworld::HelloRequest;
 
-class GreeterServiceImpl final : public Greeter::Service {
+class GreeterServiceImpl final : public Greeter::Service
+{
 
     Status SayHello(ServerContext *ctx, const HelloRequest *request,
                     HelloReply *reply) override
@@ -27,7 +28,8 @@ class GreeterServiceImpl final : public Greeter::Service {
     }
 };
 
-void RunServer() {
+void RunServer()
+{
     std::string address = "0.0.0.0";
     std::string port = "50051";
     std::string server_address = address + ":" + port;

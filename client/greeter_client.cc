@@ -16,7 +16,7 @@ class GreeterClient
 {
 public:
     GreeterClient(std::shared_ptr<Channel> channel)
-        : stub_(Greeter::NewStub(channel)) { }
+        : stub_(Greeter::NewStub(channel)) {}
 
     std::string SayHello(const std::string &user)
     {
@@ -34,7 +34,7 @@ public:
         else
         {
             std::cout << status.error_code() << ": " << status.error_message()
-                        << std::endl;
+                      << std::endl;
 
             return "RPC failed";
         }
@@ -52,9 +52,9 @@ int main()
     std::cout << "Client querying server address: " << server_address << std::endl;
 
     GreeterClient greeter(grpc::CreateChannel(
-            server_address, grpc::InsecureChannelCredentials()));
+        server_address, grpc::InsecureChannelCredentials()));
 
-    std::string user ("world");
+    std::string user("world");
 
     std::string reply = greeter.SayHello(user);
     std::cout << "Greeter sent: " << reply << std::endl;
