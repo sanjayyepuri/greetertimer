@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+package helloworld;
+
 service GreeterTimer {
   // Unary request followed by multiple streamed responses.
   // Response granularity will be set by the request batch size.

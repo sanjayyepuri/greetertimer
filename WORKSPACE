@@ -16,7 +16,7 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 # rules_proto_dependencies()
 # rules_proto_toolchains()
 
-## ^^ turns out you don't the above
+## ^^ turns out you don't need the above
 
 # Load rules for grpc https://github.com/grpc/grpc/blob/master/src/cpp/README.md#make
 http_archive(
